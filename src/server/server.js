@@ -5,7 +5,7 @@ import axios from "axios";
 const dev = process.env.NODE_ENV !== "production";
 const nextApp = next({ dev });
 const handle = nextApp.getRequestHandler();
-const basePort = 3000;
+const basePort =  process.env.PORT || 3000;
 
 const app = express();
 
