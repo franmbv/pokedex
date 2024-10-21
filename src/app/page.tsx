@@ -1,6 +1,11 @@
 "use client";
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 
+
+interface Sprites {
+  front_default: string;
+}
 
 interface Ability {
   ability: {
@@ -13,6 +18,7 @@ interface PokemonData {
   name: string;
   height: number;
   weight: number;
+  sprites: Sprites;
   abilities: Ability[];
 }
 
@@ -69,6 +75,13 @@ const Home = () => {
             data.map((pokemon, index) => (
               <div key={index} className="bg-white shadow-md rounded-lg p-4 text-center">
                 <h2 className="text-xl font-bold mb-2 capitalize">
+                <Image 
+                  src={pokemon.sprites.front_default}
+                  alt="pokemon"
+                  width={100} 
+                  height={100}
+                  className='mx-auto mb-2'
+                />
                   {/* Calcular la numeración global */}
                   {(page - 1) * limit + index + 1}. {pokemon.name}
                 </h2>
